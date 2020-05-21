@@ -1,0 +1,11 @@
+server:
+  port: 7979
+
+security:
+  oauth2:
+    client:
+      client-id: northout
+      clientSecret: northout
+    resource:
+      jwt:
+        key-uri: http://localhost:8989/auth/v1/oauth/token_key

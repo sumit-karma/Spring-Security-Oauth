@@ -1,0 +1,40 @@
+server:
+  port: 8989
+  servlet:
+    context-path: /auth/v1
+    session:
+      cookie:
+        path: /auth/v1
+
+
+spring:
+  main:
+    banner-mode: off
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/authserver_db
+    username: root
+    password: sumit
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        show-sql: true
+        format-sql: true
+    hibernate:
+      ddl-auto : update
+    show-sql: true
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+
+
+
+
+
+
+

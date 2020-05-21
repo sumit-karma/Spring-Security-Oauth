@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.springframework.security: INFO
+    org.springframework.security.oauth2: INFO
+#    org.springframework.boot.autoconfigure: DEBUG
+
+spring:
+  thymeleaf:
+    cache: false
+  security:
+    oauth2:
+      client:
+        registration:
+          northout-employee-client-auth-code:
+            provider: northoutserver
+            client-id: northout
+            client-secret: northout
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/authorized"
+            scope: READ,WRITE
+          northout-employee-client-client-creds:
+            provider: northoutserver
+            client-id: northout
+            client-secret: northout
+            authorization-grant-type: client_credentials
+            scope: READ,WRITE
+          northout-employee-client-password:
+            provider: northoutserver
+            client-id: northout
+            client-secret: northout
+            authorization-grant-type: password
+            scope: READ,WRITE
+        provider:
+          northoutserver:
+            authorization-uri: http://localhost:8989/auth/v1/oauth/authorize
+            token-uri: http://localhost:8989/auth/v1/oauth/token
+
+employees:
+  base-uri: http://localhost:7979/employees
